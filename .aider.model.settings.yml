@@ -1,0 +1,5 @@
+- name: ollama/qwen2.5-coder:7b
+  extra_params:
+    extra_headers:
+      CF-Access-Client-Id: "redacted.access"
+      CF-Access-Client-Secret: "redacted"
