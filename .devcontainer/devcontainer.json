@@ -1,0 +1,55 @@
+{
+    "name": "Ultimate Python-Typst Workspace",
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+        "ghcr.io/astral-sh/uv/install-uv:1": {},
+        "ghcr.io/devcontainers-community/features/typst:1": {},
+        "ghcr.io/devcontainers/features/github-cli:1": {},
+        "ghcr.io/devcontainers/features/common-utils:1": {
+            "configureZshAsDefaultShell": true
+        }
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+        
+                "asvetliakov.vscode-neovim",      // Real Neovim backend
+                "charliermarsh.ruff",             // Fast Python linting/formatting
+                "ms-python.python",               // Base Python support
+                "myriad-dreamin.tinymist",        // Best Typst extension
+                "github.vscode-github-actions",   // Actions management
+                
+
+                "eamodio.gitlens",                // Deep Git history & blame
+                "usernamehw.errorlens",           // Inline errors (shortens fix loop)
+                "ionutvmi.path-intellisense",      // Autocomplete file paths
+                "tamasfe.even-better-toml",       // Crucial for pyproject.toml & uv
+                "christian-kohler.npm-intellisense", // Even if not using Node, helps with many configs
+                "stkb.rewrap",                    // Pro comment/text wrapping (Vim friendly)
+                "shd101wyy.markdown-preview-enhanced" // Better docs than built-in MD
+            ],
+            "settings": {
+                // UI & Editor
+                "editor.formatOnSave": true,
+                "editor.lineNumbers": "relative", // Essential for Vim motions
+                "editor.minimap.enabled": false,
+                "editor.guides.bracketPairs": true,
+                
+                // Python / uv
+                "python.defaultInterpreterPath": ".venv/bin/python",
+                "python.analysis.typeCheckingMode": "basic",
+                
+                // Typst
+                "tinymist.exportPdf": "onSave",
+                "tinymist.preview.refresh": "onSave",
+                
+                // Neovim
+                "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim"
+            }
+        }
+    },
+    // Installs Neovim and syncs your Python environment immediately
+    "postCreateCommand": "sudo apt-get update && sudo apt-get install -y neovim && uv sync",
+    "forwardPorts": [3000],
+    "remoteUser": "vscode"
+}
